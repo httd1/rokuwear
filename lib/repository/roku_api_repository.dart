@@ -1,6 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'package:rokuwear/model/device_model.dart';
 
+// Documentação e referências
+// https://developer.roku.com/pt-br/docs/developer-program/dev-tools/external-control-api.md
+
 class RokuApiRepository {
   final String host;
 
@@ -17,7 +20,7 @@ class RokuApiRepository {
     return DeviceModel.fromXml(response.body);
   }
 
-  /// Equivalent to pressing down and releasing the remote control key identified after the slash.
+  /// Euivalente a um click no controle, key expecífica o botão
   Future<bool> keyPress(String key) async {
     var url = Uri.parse("$host/keypress/$key");
     var response = await http.post(url);

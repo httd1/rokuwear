@@ -14,7 +14,7 @@ class SsdpRepository extends ChangeNotifier {
   late RawDatagramSocket socket;
 
   final InternetAddress ipRokuSearcher = InternetAddress('239.255.255.250');
-  final int portSeracher = 1900;
+  final int portSearcher = 1900;
 
   final String payload = "M-SEARCH * HTTP/1.1\r\n"
       "Host: 239.255.255.250:1900\r\n"
@@ -57,7 +57,7 @@ class SsdpRepository extends ChangeNotifier {
 
   /// envia uma payload para a conexão UDP
   void sendPayload(String payload) {
-    socket.send(utf8.encode(payload), ipRokuSearcher, portSeracher);
+    socket.send(utf8.encode(payload), ipRokuSearcher, portSearcher);
   }
 
   void close() {
